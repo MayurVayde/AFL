@@ -29,24 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Initialize Swiper for Hero Section
-    if (document.querySelector('.hero-swiper')) {
-        const heroSwiper = new Swiper('.hero-swiper', {
-            loop: true,
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            },
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
-    }
+    // 3. Removed Swiper Initialization (Hero is now static)
 
     // 3.5 Initialize Swiper for Testimonials
     if (document.querySelector('.testimonials-slider')) {
@@ -99,4 +82,22 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.opacity = '0';
         animationObserver.observe(el);
     });
+
+    // 5. Initialize Vanilla Tilt manually to ensure it hooks 3D
+    if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll(".feature-card"), {
+            max: 20,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.3,
+            scale: 1.05
+        });
+        VanillaTilt.init(document.querySelectorAll(".weltec-feature-card"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2,
+            scale: 1.03
+        });
+    }
 });
